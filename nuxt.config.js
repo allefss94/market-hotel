@@ -1,11 +1,16 @@
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
+  target: 'static',
   head: {
-    title: 'hotel-reserve',
+    title: 'Hotel Reserve',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      {
+        hid: 'Reserva de quartos',
+        name: 'Hotel Reserve',
+        content: 'Reserve os melhores quartos com os melhores preços.',
+      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
