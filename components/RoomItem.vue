@@ -1,20 +1,23 @@
 <template>
   <div class="card">
-    <img src="~/assets/images/bedroom.jpg" alt="Bedroom" />
+    <img :src="require(`~/assets/images/${room.img}`)" alt="Bedroom" />
     <div class="info">
-      <h1>Titulo do quarto</h1>
-      <span>R$ 100,00</span>
+      <h1>{{ room.title }}</h1>
+      <span>
+        {{
+          room.price.toLocaleString('pt-BR', {
+            minimunFractionDigits: 2,
+            style: 'currency',
+            currency: 'BRL',
+          })
+        }}</span
+      >
     </div>
     <div class="description">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-        maiores quam asperiores voluptate illo minima laudantium distinctio sit
-        voluptatum, provident saepe fuga nobis doloribus ratione neque eveniet
-        obcaecati ad culpa!
-      </p>
+      <p>{{ room.description }}</p>
     </div>
     <div class="button">
-      <button>Reservar</button>
+      <nuxt-link to="/room" tag="button">Reservar</nuxt-link>
     </div>
   </div>
 </template>
@@ -22,6 +25,12 @@
 <script>
 export default {
   name: 'RoomItem',
+  props: {
+    room: {
+      type: Object,
+      required: true,
+    },
+  },
 }
 </script>
 
@@ -61,6 +70,7 @@ export default {
     font-size: 0.8rem;
     padding: 0.6rem 1.6rem;
     text-align: left;
+    min-height: 100px;
   }
   .button {
     display: flex;

@@ -1,17 +1,22 @@
 <template>
-  <div class="grid">
-    <RoomItem v-for="(item, index) in 6" :key="index" />
+  <div class="flex">
+    <RoomItem v-for="room in rooms" :key="room.id" :room="room" />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Rooms',
+  name: 'RoomsLayout',
+  computed: {
+    rooms() {
+      return this.$store.state.cart.items
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-.grid {
+.flex {
   margin: 2rem 0;
   width: 100%;
   display: flex;

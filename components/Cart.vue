@@ -6,14 +6,28 @@
     <table>
       <thead>
         <th>Quarto</th>
-        <th>R$</th>
+        <th></th>
       </thead>
       <tbody>
-        <tr>
-          <td>Description</td>
-          <td>200,00</td>
+        <tr v-for="item in getItems" :key="item.id">
+          <td>{{ item.title }}</td>
+          <td>
+            {{
+              item.price.toLocaleString('pt-BR', {
+                minimumFractionDigits: 2,
+                style: 'currency',
+                currency: 'BRL',
+              })
+            }}
+          </td>
         </tr>
       </tbody>
+      <tfoot>
+        <tr>
+          <td>Total</td>
+          <td>{ }}</td>
+        </tr>
+      </tfoot>
     </table>
   </div>
 </template>
@@ -21,6 +35,19 @@
 <script>
 export default {
   name: 'Cart',
+  computed: {
+    getItems() {
+      return this.$store.state.cart.items
+    },
+    getTotalAmount(items) {
+      return items.map(item =>
+        item.reduce((amount, item) => {
+          return (amount += item.price)
+        }, 0),
+      )
+    },
+  },
+
   methods: {
     closeCart() {
       this.$emit('closeCart', false)

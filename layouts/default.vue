@@ -1,12 +1,14 @@
 <template>
-  <div>
+  <div class="container">
     <header class="nav">
       <Menu @showCart="showCart = $event" />
     </header>
     <div class="cart">
       <Cart v-show="showCart" @closeCart="showCart = $event" />
     </div>
-    <Nuxt />
+    <transition name="slide-fade" mode="out-in" appear>
+      <Nuxt />
+    </transition>
     <footer>
       <strong>Hotel Reserve</strong>
     </footer>
@@ -14,6 +16,7 @@
 </template>
 <script>
 export default {
+  name: 'LayoutDefaul',
   data() {
     return {
       showCart: false,
@@ -39,5 +42,16 @@ footer {
   align-items: center;
   background: teal;
   color: #eee;
+}
+.slide-fade-enter-active {
+  transition: all 0.3s ease;
+}
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter,
+.slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
 }
 </style>

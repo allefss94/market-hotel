@@ -1,15 +1,19 @@
 <template>
   <div class="navbar">
-    <svg
-      id="hotel-location"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 20 20"
-    >
-      <path
-        d="M2 12h18v6h-2v-2H2v2H0V2h2v10zm8-6h8a2 2 0 0 1 2 2v3H10V6zm-4 5a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"
-      />
-    </svg>
-    <strong>Hotel Reserve</strong>
+    <nuxt-link to="/">
+      <svg
+        id="hotel-location"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+      >
+        <path
+          d="M2 12h18v6h-2v-2H2v2H0V2h2v10zm8-6h8a2 2 0 0 1 2 2v3H10V6zm-4 5a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"
+        />
+      </svg>
+    </nuxt-link>
+    <nuxt-link to="/" tag="strong">
+      <strong>Hotel Reserve</strong>
+    </nuxt-link>
     <svg
       id="cart"
       xmlns="http://www.w3.org/2000/svg"
