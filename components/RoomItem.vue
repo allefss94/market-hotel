@@ -17,6 +17,7 @@
       <p>{{ room.description }}</p>
     </div>
     <div class="button">
+      <nuxt-link to="/room" tag="button">Detalhes</nuxt-link>
       <nuxt-link to="/room" tag="button">Reservar</nuxt-link>
     </div>
   </div>
@@ -77,6 +78,10 @@ export default {
     justify-content: flex-end;
     padding: 0 1.6rem;
     margin-bottom: 0.6rem;
+
+    button:nth-child(1) {
+      margin-right: 0.5rem;
+    }
 
     button {
       padding: 0.6rem 1.2rem;

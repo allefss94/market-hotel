@@ -9,7 +9,7 @@ export default {
   name: 'RoomsLayout',
   computed: {
     rooms() {
-      return this.$store.state.cart.items
+      return this.$store.getters.getItems
     },
   },
 }

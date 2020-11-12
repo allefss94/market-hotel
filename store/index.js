@@ -45,6 +45,22 @@ export const state = () => ({
   ],
 })
 
+export const getters = {
+  getItems(state) {
+    return state.items
+  },
+  getTotalAmount(state) {
+    const amount = state.items.reduce((amount, item) => {
+      return (amount += item.price)
+    }, 0)
+    return amount.toLocaleString('pt-BR', {
+      minimumFractionDigits: 2,
+      style: 'currency',
+      currency: 'BRL',
+    })
+  },
+}
+
 export const mutations = {
   setItem: (state, item) => {
     state.items.push(item)
