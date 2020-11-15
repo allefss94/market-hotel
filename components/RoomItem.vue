@@ -17,8 +17,8 @@
       <p>{{ room.description }}</p>
     </div>
     <div class="button">
-      <nuxt-link to="/room" tag="button">Detalhes</nuxt-link>
-      <nuxt-link to="/room" tag="button">Reservar</nuxt-link>
+      <nuxt-link :to="`/room/${room.id}`" tag="button">Detalhes</nuxt-link>
+      <button @click="addToCart(room)">Reservar</button>
     </div>
   </div>
 </template>
@@ -30,6 +30,12 @@ export default {
     room: {
       type: Object,
       required: true,
+    },
+  },
+  methods: {
+    addToCart(room) {
+      this.$store.commit('setItem', room)
+      alert('Adicionado com sucesso')
     },
   },
 }

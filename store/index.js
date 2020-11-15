@@ -43,14 +43,21 @@ export const state = () => ({
       img: 'bedroom.jpg',
     },
   ],
+  cart: [],
 })
 
 export const getters = {
+  getItem(state, payload) {
+    return state.items.filter(item => item.id === payload.id)
+  },
   getItems(state) {
     return state.items
   },
+  getCart(state) {
+    return state.cart
+  },
   getTotalAmount(state) {
-    const amount = state.items.reduce((amount, item) => {
+    const amount = state.cart.reduce((amount, item) => {
       return (amount += item.price)
     }, 0)
     return amount.toLocaleString('pt-BR', {
@@ -63,14 +70,15 @@ export const getters = {
 
 export const mutations = {
   setItem: (state, item) => {
-    state.items.push(item)
+    state.cart.push(item)
   },
   deleteItem: (state, item) => {
-    const itemIndex = state.items.indexof(item)
+    const itemIndex = state.cart.findIndex(i => i.id === item)
+
     if (itemIndex > -1) {
-      state.items.splice(itemIndex, 1)
+      state.cart.splice(itemIndex, 1)
     } else {
-      return { message: 'Não encontrado' }
+      alert('Erro')
     }
   },
 }

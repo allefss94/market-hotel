@@ -9,7 +9,7 @@
         <th></th>
       </thead>
       <tbody>
-        <tr v-for="item in getItems" :key="item.id">
+        <tr v-for="item in getCart" :key="item.id">
           <td>{{ item.title }}</td>
           <td class="infos">
             {{
@@ -19,7 +19,7 @@
                 currency: 'BRL',
               })
             }}
-            <span class="trash">
+            <span class="trash" @click="remove(item.id)">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                 <path
                   d="M6 2l2-2h4l2 2h4v2H2V2h4zM3 6h14l-1 14H4L3 6zm5 2v10h1V8H8zm3 0v10h1V8h-1z"
@@ -44,12 +44,15 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'Cart',
   computed: {
-    ...mapGetters(['getItems', 'getTotalAmount']),
+    ...mapGetters(['getCart', 'getTotalAmount']),
   },
 
   methods: {
     closeCart() {
       this.$emit('closeCart', false)
+    },
+    remove(id) {
+      this.$store.commit('deleteItem', id)
     },
   },
 }
