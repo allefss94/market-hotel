@@ -42,7 +42,12 @@ export default {
   methods: {
     addToCart(room) {
       this.$store.commit('setItem', room)
-      alert('Item adicionado com sucesso')
+      this.$swal({
+        title: 'Adicionado!',
+        text: 'Adicionado ao carrinho com Sucesso!',
+        icon: 'success',
+        confirmButtonText: 'X',
+      })
     },
   },
 }
@@ -98,6 +103,9 @@ article {
         outline: 0;
         &:hover {
           background: rgb(0, 168, 168);
+        }
+        @media (max-width: 400px) {
+          padding: 0.6rem;
         }
       }
     }

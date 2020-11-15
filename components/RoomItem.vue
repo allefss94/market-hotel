@@ -35,7 +35,12 @@ export default {
   methods: {
     addToCart(room) {
       this.$store.commit('setItem', room)
-      alert('Adicionado com sucesso')
+      this.$swal({
+        title: 'Adicionado!',
+        text: 'Adicionado ao carrinho com Sucesso!',
+        icon: 'success',
+        confirmButtonText: 'X',
+      })
     },
   },
 }

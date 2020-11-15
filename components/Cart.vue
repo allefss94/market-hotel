@@ -53,6 +53,12 @@ export default {
     },
     remove(id) {
       this.$store.commit('deleteItem', id)
+      this.$swal({
+        title: 'Removido!',
+        text: 'Removido do carrinho com Sucesso!',
+        icon: 'success',
+        confirmButtonText: 'X',
+      })
     },
   },
 }
