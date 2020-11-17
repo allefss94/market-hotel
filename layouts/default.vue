@@ -1,10 +1,12 @@
 <template>
   <div class="container">
     <Menu class="nav" @showCart="showCart = $event" />
-    <Cart v-show="showCart" class="cart" @closeCart="showCart = $event" />
+    <transition name="fade-slide">
+      <Cart v-show="showCart" class="cart" @closeCart="showCart = $event" />
+    </transition>
 
     <transition name="slide-fade" mode="out-in" appear>
-      <Nuxt class="page" />
+      <Nuxt />
     </transition>
 
     <Footer />
@@ -44,5 +46,15 @@ export default {
 .slide-fade-leave-to {
   transform: translateX(10px);
   opacity: 0;
+}
+
+.fade-slide-enter,
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateX(400px);
+}
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: all 0.5s;
 }
 </style>

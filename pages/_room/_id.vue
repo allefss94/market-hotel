@@ -46,7 +46,7 @@ export default {
         title: 'Adicionado!',
         text: 'Adicionado ao carrinho com Sucesso!',
         icon: 'success',
-        confirmButtonText: 'X',
+        confirmButtonText: 'x',
       })
     },
   },
